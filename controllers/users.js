@@ -1,7 +1,7 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res) => {
+const getAll = (req, res) => {
     //#swagger.tags=['Users']
     mongodb.getDatabase().db().collection('users').find().toArray((err, users) => {
         if (err) {
