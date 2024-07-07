@@ -32,12 +32,11 @@ const getSingle = async (req, res) => {
 const createUser = async (req, res) => {
     //#swagger.tags=['Users']
     const user = {
-        userName: req.body.userName,
-        email: req.body.email,
         name: req.body.name,
-        ipaddress: req.body.ipaddress
+        email: req.body.email,
+        phone: req.body.phone
     };
-    const response = await mongodb.getDatabase().db('project1').collection('contacts').insertOne(user);
+    const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
     if (response.acknowledged > 0) {
         res.status(204).send();
     } else {
@@ -52,12 +51,11 @@ const updateUser = async (req, res) => {
     }
     const userId = new ObjectId(req.params.id);
     const user = {
-        userName: req.body.userName,
-        email: req.body.email,
         name: req.body.name,
-        ipaddress: req.body.ipaddress
+        email: req.body.email,
+        phone: req.body.phone
     };
-    const response = await mongodb.getDatabase().db('project1').collection('contacts').replaceOne({_id: userId}, user);
+    const response = await mongodb.getDatabase().db().collection('users').replaceOne({_id: userId}, user);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -71,7 +69,7 @@ const deleteUser = async (req, res) => {
         res.status(400).json('Must use a valid contact id to delete a contact.');
     }
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db('project1').collection('contacts').deleteOne({_id: userId});
+    const response = await mongodb.getDatabase().db().collection('users').deleteOne({_id: userId});
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
