@@ -1,0 +1,19 @@
+{
+  "name": "cse341groceries",
+  "version": "1.0.0",
+  "description": "Group final project for CSE 341",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtmenji/cse341groceries.git"
+  },
+  "author": "Michael Menjivar and Donald Felton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtmenji/cse341groceries/issues"
+  },
+  "homepage": "https://github.com/mtmenji/cse341groceries#readme"
+}
