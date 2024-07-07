@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mtmenji/cse341groceries/issues"
   },
-  "homepage": "https://github.com/mtmenji/cse341groceries#readme"
+  "homepage": "https://github.com/mtmenji/cse341groceries#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
