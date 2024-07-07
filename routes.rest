@@ -1,13 +1,13 @@
 # Get all contacts.
-GET https://cse341groceries.onrender.com/users
+GET http://localhost:3000/users
 
 
 # Get contact by ID.
-GET https://cse341groceries.onrender.com/users/6689e78f0b756ba4f23e8141
+GET http://localhost:3000/users/6689e78f0b756ba4f23e8141
 
 
 ### create user
-POST https://cse341groceries.onrender.com/users HTTP/1.1 content-type: application/json
+POST http://localhost:3000/users HTTP/1.1 content-type: application/json
 
 {
     "name": "gar",
@@ -17,7 +17,7 @@ POST https://cse341groceries.onrender.com/users HTTP/1.1 content-type: applicati
 
 
 # Update contact information.
-PUT https://cse341groceries.onrender.com/users/6689e78f0b756ba4f23e8141 HTTP/1.1
+PUT http://localhost:3000/users/6689e78f0b756ba4f23e8141 HTTP/1.1
 content-type: application/json
 
 {
@@ -28,4 +28,4 @@ content-type: application/json
 
 
 # Delete a contact.
-DELETE https://cse341groceries.onrender.com/users/6689e78f0b756ba4f23e8141 HTTP/1.1
+DELETE http://localhost:3000/users/6689e78f0b756ba4f23e8141 HTTP/1.1
