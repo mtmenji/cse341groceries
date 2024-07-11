@@ -3,13 +3,13 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = (req, res) => {
     //#swagger.tags=['Users']
-    mongodb.getDatabase().db().collection('users').find().toArray((err, users) => {
-        if (err) {
-            res.status(400).json({message: err});
-        }
+    mongodb.getDatabase().db().collection('users').find().toArray().then((users) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(users);
-    });
+    })
+    .catch((err) => {
+        res.status(400).json({message: err});
+    })
 };
 
 const getSingle = async (req, res) => {
@@ -18,13 +18,13 @@ const getSingle = async (req, res) => {
         res.status(400).json('Must use a valid contact id to find a contact.');
     }
     const userId = new ObjectId(req.params.id);
-    mongodb.getDatabase().db().collection('users').find().toArray((err, users) => {
-        if (err) {
-            res.status(400).json({message: err});
-        }
+    mongodb.getDatabase().db().collection('users').find({_id: userId}).toArray().then((users) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(users[0]);
-    });
+    })
+    .catch((err) => {
+        res.status(400).json({message: err});
+    })
 };
 
 const createUser = async (req, res) => {
