@@ -12,4 +12,4 @@
 - **Gavin** – Order (create collection, add error handling and validation, connect routes)
 
 ## Week 07 Tasks
-- Video Presentation… by Michael and Donald
+- Video Presentation… by Michael, Donald and Gavin
