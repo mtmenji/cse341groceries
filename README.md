@@ -9,7 +9,7 @@
 
 ## Week 06 Tasks
 - **Michael** – Payment (create collection, add error handling and validation, connect routes)
-- **Donald** – Order (create collection, add error handling and validation, connect routes)
+- **Gavin** – Order (create collection, add error handling and validation, connect routes)
 
 ## Week 07 Tasks
 - Video Presentation… by Michael and Donald
