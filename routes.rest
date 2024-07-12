@@ -29,3 +29,39 @@ content-type: application/json
 
 # Delete a contact.
 DELETE http://localhost:3000/users/6689e78f0b756ba4f23e8141 HTTP/1.1
+
+
+
+# Groceries
+### Create a new order
+POST http://localhost:3000/orders/user/johndoe/order
+Content-Type: application/json
+
+{
+    "user": "John Doe",
+    "date": "2024-06-10",
+    "items": "pizza, soda"
+}
+
+###
+
+### Get an order by username
+GET http://localhost:3000/orders/user/johndoe/order
+
+###
+
+### Add or update an order
+PUT http://localhost:3000/orders/user/johndoe/order
+Content-Type: application/json
+
+{
+    "date": "2024-06-11",
+    "items": "burger, fries"
+}
+
+###
+
+### Delete an order
+DELETE http://localhost:3000/orders/user/johndoe/order
+
+###

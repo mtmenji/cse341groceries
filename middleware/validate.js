@@ -19,6 +19,18 @@ const userValidation = (req, res, next) => {
   });
 };
 
+const groceryValidation = (req, res, next) => {
+  const { name, quantity } = req.body;
+  if (!name || typeof name !== 'string') {
+    return res.status(400).send('Invalid grocery name');
+  }
+  if (!quantity || typeof quantity !== 'number') {
+    return res.status(400).send('Invalid grocery quantity');
+  }
+  next();
+};
+
 module.exports = {
-  userValidation
+  userValidation,
+  groceryValidation
 };
