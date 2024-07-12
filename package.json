@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/mtmenji/cse341groceries.git"
   },
-  "author": "Michael Menjivar and Donald Felton",
+  "author": "Michael Menjivar, Donald Felton and Gavin Hart",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mtmenji/cse341groceries/issues"

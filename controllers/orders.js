@@ -1,5 +1,6 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
+const Order = require('../helpers/order');
 
 exports.createOrder = async (req, res) => {
   const { username } = req.params;
