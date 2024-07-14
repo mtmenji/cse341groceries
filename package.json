@@ -22,7 +22,7 @@
     "express": "^4.19.2",
     "modules": "^0.4.0",
     "mongodb": "^6.8.0",
-    "mongoose": "^8.5.0",
+    "mongoose": "^8.5.1",
     "node": "^18.20.4",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1",
