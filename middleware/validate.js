@@ -19,6 +19,26 @@ const userValidation = (req, res, next) => {
   });
 };
 
+const paymentValidation = (req, res, next) => {
+  const validationRule = {
+    user: 'required|string',
+    card_number: 'required|string',
+    expiration_date: 'required|string',
+    security_code: 'required|string'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 const groceryValidation = (req, res, next) => {
   const { name, quantity } = req.body;
   if (!name || typeof name !== 'string') {
@@ -32,5 +52,6 @@ const groceryValidation = (req, res, next) => {
 
 module.exports = {
   userValidation,
+  paymentValidation,
   groceryValidation
 };

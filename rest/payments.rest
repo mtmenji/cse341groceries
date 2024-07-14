@@ -1,0 +1,33 @@
+# Get all payments.
+GET http://localhost:3000/payments
+
+
+# Get payment by ID.
+GET http://localhost:3000/payments/6689e7590b756ba4f23e67f8
+
+
+### create payment
+POST http://localhost:3000/payments HTTP/1.1 content-type: application/json
+
+{
+    "user": "Bobby Jones",
+    "card_number": "2345-6789-0123-4567",
+    "expiration_date": "11/24",
+    "security_code": "456"
+}
+
+
+# Update payment information.
+PUT http://localhost:3000/payments/6689e7590b756ba4f23e67f8 HTTP/1.1
+content-type: application/json
+
+{
+    "user": "Jone Smith",
+    "card_number": "2345-6789-0123-4567",
+    "expiration_date": "11/24",
+    "security_code": "456"
+}
+
+
+# Delete a payment.
+DELETE http://localhost:3000/payments/6689e78f0b756ba4f23e8141 HTTP/1.1

@@ -1,0 +1,31 @@
+# Get all contacts.
+GET http://localhost:3000/users
+
+
+# Get contact by ID.
+GET http://localhost:3000/users/6689e78f0b756ba4f23e8141
+
+
+### create user
+POST http://localhost:3000/users HTTP/1.1 content-type: application/json
+
+{
+    "name": "gar",
+    "email": "garett.lovelessgmail.com",
+    "phone": "111-222-3333"
+}
+
+
+# Update contact information.
+PUT http://localhost:3000/users/6689e78f0b756ba4f23e8141 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "garet",
+    "email": "garet.loveless@gmail.com",
+    "phone": "444-555-6666"
+}
+
+
+# Delete a contact.
+DELETE http://localhost:3000/users/6689e78f0b756ba4f23e8141 HTTP/1.1
