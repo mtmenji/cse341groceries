@@ -50,8 +50,28 @@ const groceryValidation = (req, res, next) => {
   next();
 };
 
+const saveOrder = (req, res, next) => {
+  const validationRule = {
+    orderDate: 'required|string',
+    'groceryItems.*.name': 'required|string',
+    'groceryItems.*.quantity': 'required|number'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 module.exports = {
   userValidation,
   paymentValidation,
-  groceryValidation
+  groceryValidation,
+  saveOrder
 };
