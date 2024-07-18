@@ -1,14 +1,17 @@
 const mongodb = require('../data/database')
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res) => {
+const getAll = (req, res) => {
     //#swagger.tags=['Product']
-    const result = await mongodb.getDatabase().db().collection('products').find();
-    result.toArray().then((products) => {
+    console.log("in controller funcion");
+    mongodb.getDatabase().db().collection('products').find().toArray().then((products) => { 
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(products);
-    });
-};
+    })
+    .catch((err) => {
+        res.status(400).json({message: err});
+    })
+}
 
 const getById = async (req, res) => {
     //#swagger.tags=['Product']
@@ -22,6 +25,9 @@ const getById = async (req, res) => {
 
 const addProduct = async (req, res) => {
     //#swagger.tags=['Product']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid product id.');
+    }
     const product = {
         name: req.body.name,
         category: req.body.category,
@@ -29,7 +35,7 @@ const addProduct = async (req, res) => {
         price:req.body.price,
         units: req.body.units,
     };
-    const response = await mongodb.getDatabase().db().collection('products').insertOne(products);
+    const response = await mongodb.getDatabase().db().collection('products').insertOne(product);
     if (response.acknowledged) {
         res.status(201).json(response);
     } else {
@@ -50,7 +56,7 @@ const updateproduct = async (req, res) => {
         price:req.body.price,
         units: req.body.units,
     };
-    const response = await mongodb.getDatabase().db().collection('products').replaceOne({ _id: productIdId}, product);
+    const response = await mongodb.getDatabase().db().collection('products').replaceOne({ _id: productId}, product);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
@@ -64,7 +70,7 @@ const deleteproduct = async (req, res) => {
         res.status(400).json('Must use a valid product id.');
     }
     const productId = new ObjectId(req.params.id);
-    const response = await mongodb.getDatabase().db().collection('products').deleteOne({ _id: productIdId});
+    const response = await mongodb.getDatabase().db().collection('products').deleteOne({ _id: productId});
     if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
