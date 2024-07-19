@@ -4,18 +4,18 @@ const validation = require('../middleware/validate');
 const { isAuthenticated } = require('../middleware/authenticate');
 
 // Get all orders for a specific user
-router.get('/user/:username/order', orders.getAllOrders);
+router.get('/', orders.getAllOrders);
 
 // Get a specific order by ID
-router.get('/user/:username/order/:id', orders.getOrderById);
+router.get('/:id', orders.getOrderById);
 
 // Create a new order for a specific user
-router.post('/user/:username/order', isAuthenticated, validation.saveOrder, orders.createOrder);
+router.post('/', validation.saveOrder, orders.createOrder);
 
-// Update a specific grocery item in an order
-router.put('/user/:username/order/grocery/:groceryId', isAuthenticated, validation.groceryValidation, orders.updateGroceryItem);
+// Update a specific order
+router.put('/:id', validation.saveOrder, orders.updateOrder);
 
 // Delete a specific grocery item from an order
-router.delete('/user/:username/order/grocery/:groceryId', isAuthenticated, orders.deleteGroceryItem);
+router.delete('/:id', orders.deleteOrder);
 
 module.exports = router;

@@ -39,22 +39,11 @@ const paymentValidation = (req, res, next) => {
   });
 };
 
-const groceryValidation = (req, res, next) => {
-  const { name, quantity } = req.body;
-  if (!name || typeof name !== 'string') {
-    return res.status(400).send('Invalid grocery name');
-  }
-  if (!quantity || typeof quantity !== 'number') {
-    return res.status(400).send('Invalid grocery quantity');
-  }
-  next();
-};
-
 const saveOrder = (req, res, next) => {
   const validationRule = {
-    orderDate: 'required|string',
-    'groceryItems.*.name': 'required|string',
-    'groceryItems.*.quantity': 'required|number'
+    user: 'required|string',
+    date: 'required|string',
+    items: 'required|string'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {
@@ -93,7 +82,6 @@ const saveProduct = (req, res, next) => {
 module.exports = {
   userValidation,
   paymentValidation,
-  groceryValidation,
   saveOrder,
   saveProduct
 };

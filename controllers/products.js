@@ -16,8 +16,7 @@ const getAll = (req, res) => {
 const getById = async (req, res) => {
     //#swagger.tags=['Product']
     const productId = new ObjectId(req.params.id)
-    const result = await mongodb.getDatabase().db().collection('products').find('_id: productId');
-    result.toArray().then((products) => {
+    mongodb.getDatabase().db().collection('products').find({_id: productId}).toArray().then((products) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(products[0]);
     });
@@ -25,15 +24,12 @@ const getById = async (req, res) => {
 
 const addProduct = async (req, res) => {
     //#swagger.tags=['Product']
-    if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json('Must use a valid product id.');
-    }
     const product = {
         name: req.body.name,
         category: req.body.category,
         description: req.body.description,
         price:req.body.price,
-        units: req.body.units,
+        unit: req.body.unit,
     };
     const response = await mongodb.getDatabase().db().collection('products').insertOne(product);
     if (response.acknowledged) {
@@ -54,7 +50,7 @@ const updateproduct = async (req, res) => {
         category: req.body.category,
         description: req.body.description,
         price:req.body.price,
-        units: req.body.units,
+        unit: req.body.unit,
     };
     const response = await mongodb.getDatabase().db().collection('products').replaceOne({ _id: productId}, product);
     if (response.modifiedCount > 0) {
