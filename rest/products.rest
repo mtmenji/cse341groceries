@@ -1,0 +1,33 @@
+# Get all products.
+GET http://localhost:3000/products
+
+# Get product by ID.
+GET http://localhost:3000/products/6689e7590b756ba4f23e67f8
+
+
+### create product
+POST http://localhost:3000/products HTTP/1.1 content-type: application/json
+
+{
+    "name": "Mango",
+    "category": "Fruit",
+    "price": 3.99,
+    "unit": "per each",
+    "description": "Sweet and fleshy this tropical fruit is excellent for a variety of uses."
+}
+
+
+# Update product information.
+PUT http://localhost:3000/products/ HTTP/1.1
+content-type: application/json
+
+{
+   "name": "Mango",
+    "category": "Fruit",
+    "price": 2.99,
+    "unit": "per each",
+    "description": "Sweet and fleshy this tropical fruit is excellent for a variety of uses."
+}
+
+# Delete a product.
+DELETE http://localhost:3000/products/ HTTP/1.1
