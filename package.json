@@ -4,7 +4,7 @@
   "description": "Group final project for CSE 341",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/mtmenji/cse341groceries#readme",
   "dependencies": {
+    "@shelf/jest-mongodb": "^4.3.2",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -29,6 +30,7 @@
     "node": "^18.20.4",
     "passport": "^0.7.0",
     "passport-github2": "^0.1.12",
+    "supertest": "^7.0.0",
     "swagger": "^0.7.5",
     "swagger-autogen": "^2.23.7",
     "swagger-ui-express": "^5.0.1",
