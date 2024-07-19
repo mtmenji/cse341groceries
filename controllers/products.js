@@ -3,7 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = (req, res) => {
     //#swagger.tags=['Product']
-    console.log("in controller funcion");
+    console.log("in controller function");
     mongodb.getDatabase().db().collection('products').find().toArray().then((products) => { 
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(products);
