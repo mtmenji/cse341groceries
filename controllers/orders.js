@@ -24,9 +24,9 @@ const getOrderById = async (req, res) => {
 const createOrder = async (req, res) => {
     //#swagger.tags=['Order']
     const order = {
-        username: req.params.username,
-        orderDate: req.body.orderDate,
-        groceryItems: req.body.groceryItems
+        user: req.params.name,
+        date: req.body.date,
+        items: req.body.items
     };
     const response = await mongodb.getDatabase().db().collection('orders').insertOne(order);
     if (response.acknowledged) {
@@ -44,12 +44,12 @@ const updateGroceryItem = async (req, res) => {
     const groceryId = new ObjectId(req.params.groceryId);
     const update = {
         $set: {
-            'groceryItems.$.name': req.body.name,
-            'groceryItems.$.quantity': req.body.quantity
+            'items.$.name': req.body.name,
+            'items.$.quantity': req.body.quantity
         }
     };
     const response = await mongodb.getDatabase().db().collection('orders').updateOne(
-        { username: req.params.username, 'groceryItems._id': groceryId },
+        { username: req.params.username, 'items._id': groceryId },
         update
     );
     if (response.modifiedCount > 0) {
@@ -67,7 +67,7 @@ const deleteGroceryItem = async (req, res) => {
     const groceryId = new ObjectId(req.params.groceryId);
     const response = await mongodb.getDatabase().db().collection('orders').updateOne(
         { username: req.params.username },
-        { $pull: { groceryItems: { _id: groceryId } } }
+        { $pull: { items: { _id: groceryId } } }
     );
     if (response.modifiedCount > 0) {
         res.status(204).send();
