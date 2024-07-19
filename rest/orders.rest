@@ -1,11 +1,11 @@
 ### Get all orders for a user
-GET http://localhost:3000/user/johndoe/order
+GET http://localhost:3000/orders
 
 ### Get a specific order by ID
-GET http://localhost:3000/user/johndoe/order/60d7c319f1a5c1532c90b84e
+GET http://localhost:3000/orders/60d7c319f1a5c1532c90b84e
 
 ### Create a new order for a user
-POST http://localhost:3000/user/johndoe/order
+POST http://localhost:3000/orders
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ### Update a specific grocery item in an order
-PUT http://localhost:3000/user/johndoe/order/grocery/60d7c319f1a5c1532c90b84e
+PUT http://localhost:3000/orders/60d7c319f1a5c1532c90b84e
 Content-Type: application/json
 
 {
@@ -26,4 +26,4 @@ Content-Type: application/json
 }
 
 ### Delete a specific grocery item from an order
-DELETE http://localhost:3000/user/johndoe/order/grocery/60d7c319f1a5c1532c90b84e
+DELETE http://localhost:3000/orders/60d7c319f1a5c1532c90b84e

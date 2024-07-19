@@ -61,6 +61,8 @@ const saveOrder = (req, res, next) => {
 const saveProduct = (req, res, next) => {
   const validationRule = {
   name: 'required|string',
+  brand: 'required|string',
+  region: 'required|string',
   category: 'required|string',
   description: 'required|string',
   price: 'required|numeric',

@@ -360,6 +360,12 @@
                 "name": {
                   "example": "any"
                 },
+                "brand": {
+                  "example": "any"
+                },
+                "region": {
+                  "example": "any"
+                },
                 "category": {
                   "example": "any"
                 },
@@ -431,6 +437,12 @@
               "type": "object",
               "properties": {
                 "name": {
+                  "example": "any"
+                },
+                "brand": {
+                  "example": "any"
+                },
+                "region": {
                   "example": "any"
                 },
                 "category": {

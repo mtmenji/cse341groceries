@@ -26,6 +26,8 @@ const addProduct = async (req, res) => {
     //#swagger.tags=['Product']
     const product = {
         name: req.body.name,
+        brand: req.body.brand,
+        region: req.body.region,
         category: req.body.category,
         description: req.body.description,
         price:req.body.price,
@@ -47,6 +49,8 @@ const updateproduct = async (req, res) => {
     const productId = new ObjectId(req.params.id);
     const product = {
         name: req.body.name,
+        brand: req.body.brand,
+        region: req.body.region,
         category: req.body.category,
         description: req.body.description,
         price:req.body.price,
