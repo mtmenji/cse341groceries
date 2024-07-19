@@ -10,12 +10,12 @@ router.get('/', orders.getAllOrders);
 router.get('/:id', orders.getOrderById);
 
 // Create a new order for a specific user
-router.post('/', isAuthenticated, validation.saveOrder, orders.createOrder);
+router.post('/', validation.saveOrder, orders.createOrder);
 
-// Update a specific grocery item in an order
-router.put('/:id', isAuthenticated, validation.groceryValidation, orders.updateGroceryItem);
+// Update a specific order
+router.put('/:id', validation.saveOrder, orders.updateOrder);
 
 // Delete a specific grocery item from an order
-router.delete('/:id', isAuthenticated, orders.deleteGroceryItem);
+router.delete('/:id', orders.deleteOrder);
 
 module.exports = router;

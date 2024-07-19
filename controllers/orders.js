@@ -1,78 +1,77 @@
 const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAllOrders = async (req, res) => {
-    //#swagger.tags=['Order']
-    const username = req.params.username;
-    const result = await mongodb.getDatabase().db().collection('orders').find({ username });
-    result.toArray().then((orders) => {
+const getAllOrders = (req, res) => {
+    //#swagger.tags=['Orders']
+    mongodb.getDatabase().db().collection('orders').find().toArray().then((orders) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(orders);
-    });
+    })
+    .catch((err) => {
+        res.status(400).json({message: err});
+    })
 };
 
 const getOrderById = async (req, res) => {
-    //#swagger.tags=['Order']
+    //#swagger.tags=['Orders']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid payment id to find a order.');
+    }
     const orderId = new ObjectId(req.params.id);
-    const result = await mongodb.getDatabase().db().collection('orders').find({ _id: orderId });
-    result.toArray().then((orders) => {
+    mongodb.getDatabase().db().collection('orders').find({_id: orderId}).toArray().then((orders) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(orders[0]);
-    });
+    })
+    .catch((err) => {
+        res.status(400).json({message: err});
+    })
 };
 
 const createOrder = async (req, res) => {
-    //#swagger.tags=['Order']
+    //#swagger.tags=['Orders']
     const order = {
-        user: req.params.name,
+        user: req.body.user,
         date: req.body.date,
         items: req.body.items
     };
     const response = await mongodb.getDatabase().db().collection('orders').insertOne(order);
-    if (response.acknowledged) {
-        res.status(201).json(response);
+    if (response.acknowledged > 0) {
+        res.status(204).send();
     } else {
-        res.status(500).json(response.error || "An error occurred while creating this order");
+        res.status(500).json(response.error || 'Some error occured while creating the order.');
     }
 };
 
-const updateGroceryItem = async (req, res) => {
-    //#swagger.tags=['Order']
-    if (!ObjectId.isValid(req.params.groceryId)) {
-        res.status(400).json('Must use a valid grocery item id.');
+const updateOrder = async (req, res) => {
+    //#swagger.tags=['Orders']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid order id to update a order.');
     }
-    const groceryId = new ObjectId(req.params.groceryId);
-    const update = {
-        $set: {
-            'items.$.name': req.body.name,
-            'items.$.quantity': req.body.quantity
-        }
+    const orderId = new ObjectId(req.params.id);
+    const order = {
+        user: req.body.user,
+        date: req.body.date,
+        items: req.body.items
     };
-    const response = await mongodb.getDatabase().db().collection('orders').updateOne(
-        { username: req.params.username, 'items._id': groceryId },
-        update
-    );
+    const response = await mongodb.getDatabase().db().collection('orders').replaceOne({_id: orderId}, order);
     if (response.modifiedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || "An error occurred while updating this grocery item");
+        res.status(500).json(response.error || 'Some error occured while updating the order.');
     }
 };
 
-const deleteGroceryItem = async (req, res) => {
-    //#swagger.tags=['Order']
-    if (!ObjectId.isValid(req.params.groceryId)) {
-        res.status(400).json('Must use a valid grocery item id.');
+const deleteOrder = async (req, res) => {
+    //#swagger.tags=['Orders']
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json('Must use a valid order id to delete a order.');
     }
-    const groceryId = new ObjectId(req.params.groceryId);
-    const response = await mongodb.getDatabase().db().collection('orders').updateOne(
-        { username: req.params.username },
-        { $pull: { items: { _id: groceryId } } }
-    );
-    if (response.modifiedCount > 0) {
+    const orderId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection('orders').deleteOne({_id: orderId});
+    if (response.deletedCount > 0) {
         res.status(204).send();
     } else {
-        res.status(500).json(response.error || "An error occurred while deleting this grocery item");
+        res.status(500).json(response.error || 'Some error occured while removing the order.');
     }
 };
 
@@ -80,6 +79,6 @@ module.exports = {
     getAllOrders,
     getOrderById,
     createOrder,
-    updateGroceryItem,
-    deleteGroceryItem
+    updateOrder,
+    deleteOrder
 };
