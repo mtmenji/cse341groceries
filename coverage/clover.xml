@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721426823808" clover="3.2.0">
-  <project timestamp="1721426823809" name="All files">
-    <metrics statements="271" coveredstatements="112" conditionals="86" coveredconditionals="2" methods="55" coveredmethods="3" elements="412" coveredelements="117" complexity="0" loc="271" ncloc="271" packages="5" files="14" classes="14"/>
+<coverage generated="1721437805175" clover="3.2.0">
+  <project timestamp="1721437805176" name="All files">
+    <metrics statements="271" coveredstatements="107" conditionals="86" coveredconditionals="0" methods="55" coveredmethods="1" elements="412" coveredelements="108" complexity="0" loc="271" ncloc="271" packages="5" files="14" classes="14"/>
     <package name="controllers">
-      <metrics statements="154" coveredstatements="35" conditionals="70" coveredconditionals="1" methods="35" coveredmethods="1"/>
+      <metrics statements="154" coveredstatements="32" conditionals="70" coveredconditionals="0" methods="35" coveredmethods="0"/>
       <file name="orders.js" path="C:\Users\Donald\Desktop\cse341groceries(2)\cse341groceries\controllers\orders.js">
-        <metrics statements="39" coveredstatements="11" conditionals="18" coveredconditionals="1" methods="9" coveredmethods="1"/>
+        <metrics statements="39" coveredstatements="8" conditionals="18" coveredconditionals="0" methods="9" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -14,10 +14,10 @@
         <line num="8" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="17" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
@@ -172,9 +172,9 @@
       </file>
     </package>
     <package name="data">
-      <metrics statements="19" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="1"/>
+      <metrics statements="19" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="database.js" path="C:\Users\Donald\Desktop\cse341groceries(2)\cse341groceries\data\database.js">
-        <metrics statements="19" coveredstatements="8" conditionals="4" coveredconditionals="1" methods="4" coveredmethods="1"/>
+        <metrics statements="19" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -189,8 +189,8 @@
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
