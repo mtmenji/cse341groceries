@@ -19,6 +19,9 @@ const getSingle = async (req, res) => {
     }
     const paymentId = new ObjectId(req.params.id);
     mongodb.getDatabase().db().collection('payments').find({_id: paymentId}).toArray().then((payments) => {
+        if (payments.length === 0) {
+            return res.status(404).json('Payment not found');
+        }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(payments[0]);
     })

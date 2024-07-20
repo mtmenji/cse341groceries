@@ -19,6 +19,9 @@ const getOrderById = async (req, res) => {
     }
     const orderId = new ObjectId(req.params.id);
     mongodb.getDatabase().db().collection('orders').find({_id: orderId}).toArray().then((orders) => {
+        if (orders.length === 0) {
+            return res.status(404).json('Order not found');
+        }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(orders[0]);
     })

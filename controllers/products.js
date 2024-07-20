@@ -17,6 +17,9 @@ const getById = async (req, res) => {
     //#swagger.tags=['Product']
     const productId = new ObjectId(req.params.id)
     mongodb.getDatabase().db().collection('products').find({_id: productId}).toArray().then((products) => {
+        if (products.length === 0) {
+            return res.status(404).json('Product not found');
+        }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(products[0]);
     });
