@@ -26,7 +26,7 @@ describe('GET /payments', () => {
 
 describe('GET /payments/:id', () => {
   it('should return a single payment by ID', async () => {
-    const paymentId = '6689e7590b756ba4f23e67f8';
+    const paymentId = '6689e7590b756ba4f23e67f9';
     const response = await request(app).get(`/payments/${paymentId}`);
     expect(response.status).toBe(200);
     expect(response.body).toBeDefined();
